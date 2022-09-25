@@ -1,4 +1,8 @@
 // guess challenges players to guess a random number.
+// Modified to avoid asking numbers for which the player already has info,
+// e.g. Suppose we say 25 and the program says "Oops. Your guess was LOW."
+// Then, if we guess 22 the progam will display the following message:
+// As you already know, the number is greater than 25
 package main
 
 import (
@@ -36,11 +40,11 @@ func main() {
 			log.Fatal(err)
 		}
 		if guess >= max_asked {
-			fmt.Println("As you already know, the number is low than", input)
+			fmt.Println("As you already know, the number is low than", max_asked)
 			continue
 		}
 		if guess <= min_asked {
-			fmt.Println("As you already know, the number is greater than", input)
+			fmt.Println("As you already know, the number is greater than", min_asked)
 			continue
 		}
 		guesses++
